@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class UiColors{
-  static const appBarClr= Colors.orange;
+  static const primaryThemeClr= Color(0xFFFFA500);
+  static const appBarClr= Color(0xFFFFA500);
   static const appBarTxtClr= Colors.white;
-  static const primarySwatchClr= Colors.orange;
-  static const cardClr= Colors.orange;
-  static const secondCardClr= Colors.white;
-  static const headingTxtClr= Colors.orange;
-  static const cardTitleClr= Colors.white;
-  static const secondCardTitleClr= Colors.orange;
+  static const cardClr= Color(0xFFFFD68A);
+  static const secondListCardClr= Color(0xFFFFD68A);
+  static const headingTxtClr= Color(0xFFFFA500);
+  static const cardTitleClr= Color(0xFFFFA500);
 }

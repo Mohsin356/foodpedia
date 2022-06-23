@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:foodpedia/categoriesList.dart';
+import 'package:foodpedia/controllers/categoryListController.dart';
 import 'package:foodpedia/utils/colors.dart';
 import 'package:foodpedia/views/widgets/categoryCard.dart';
+import 'package:foodpedia/views/widgets/appBarWidget.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
+  HomeScreen({Key? key}) : super(key: key);
+  final listItems =Get.put(CategoryListController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: UiColors.appBarClr,
-        title: const Text("Foodpedia",style: TextStyle(fontWeight: FontWeight.bold,color: UiColors.appBarTxtClr),),
-      ),
+      appBar: const AppBarWidget(titleTxt: 'Foodpedia',appBarBgClr: UiColors.appBarClr,
+        titleTxtClr: UiColors.appBarTxtClr,implyLeading: false,),
       body: SingleChildScrollView(
         child: Container(
           decoration:  BoxDecoration(
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  children: fastFoodData.map((list)=>CardWidget(txt: list.title!,
+                  children: listItems.fastFoodList.map((list)=>CardWidget(txt: list.title!,
                    imagePath: list.image!,cardColor: UiColors.cardClr,)).toList(),
                 ),
               ),
@@ -50,8 +50,8 @@ class HomeScreen extends StatelessWidget {
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  children: desiData.map((list)=>CardWidget(txt: list.title!,
-                    imagePath: list.image!,cardColor: UiColors.cardClr,)).toList(),
+                  children: listItems.desiFoodList.map((list)=>CardWidget(txt: list.title!,
+                    imagePath: list.image!,cardColor: UiColors.secondListCardClr,)).toList(),
                 ),
               ),
               const Padding(
@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  children: sweetsData.map((list)=>CardWidget(txt: list.title!,
+                  children: listItems.sweetsList.map((list)=>CardWidget(txt: list.title!,
                     imagePath: list.image!,cardColor: UiColors.cardClr,)).toList(),
                 ),
               ),
